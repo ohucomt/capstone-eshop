@@ -147,6 +147,7 @@
 	<section>
 		<div class="container">
 		<?php
+		Message::showMsg();
 		require($view);
 		?>
 	</section>

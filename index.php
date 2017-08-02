@@ -3,7 +3,9 @@
 	error_reporting(E_ALL & ~E_NOTICE);
 	require("config.php");
 
-
+	require('classes/helper.php');
+	require('classes/message.php');
+	
 	require("classes/bootstrap.php");
 	require("classes/Controller.php");
 	require('classes/ModelUn.php');
