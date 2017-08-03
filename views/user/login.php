@@ -1,9 +1,4 @@
-<?php
-$post = $_POST;
-if($post['submit']){
-	print_r($post);
-}
-?>
+
 
 <section id="form"><!--form-->
 		<div class="container">
@@ -12,8 +7,8 @@ if($post['submit']){
 					<div class="login-form"><!--login form-->
 						<h2>Login to your account</h2>
 						<form action="" method="post">
-							<input type="text" name="user_name" placeholder="Name" />
 							<input type="email" name="user_mail" placeholder="Email Address" />
+							<input type="password" name="user_pass" placeholder="Password" />
 							<button type="submit" name="submit" value="1" class="btn btn-default">Login</button>
 						</form>
 					</div><!--/login form-->

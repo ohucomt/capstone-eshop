@@ -211,7 +211,7 @@
 								<li><a href="#details" data-toggle="tab">Details</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
 								<li><a href="#tag" data-toggle="tab">Tag</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (<span id="show_num_of_review"></span>)</a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
@@ -371,7 +371,9 @@
 							<div class="tab-pane fade active in" id="reviews" >
 								<div class="col-sm-12">
 									<?php
+									$i = 0;
 									foreach ($viewmodel as $item) {
+										$i++;
 									?>
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i><?=$item['reviewer_name']?></a></li>
@@ -381,14 +383,18 @@
 									<?php
 									}
 									?>
-									
+									<p style="display: none;" id="num_of_review"><?=$i?></p>
 									<p><b>Write Your Review</b></p>
 
-									
+									<i style="display: none;" id="is_login"><?=$_SESSION['is_login']?></i>
+									<i style="display: none;" id="user_name"><?=$_SESSION['user_data']['name']?></i>
+									<i style="display: none;" id="user_mail"><?=$_SESSION['user_data']['mail']?></i>
+
+
 									<form action="" method="post">
 										<span>
-											<input type="text" name='reviewer_name' placeholder="Your Name"/>
-											<input type="email" name='reviewer_mail' placeholder="Email Address"/>
+											<input type="text" name='reviewer_name' id="reviewer_name" placeholder="Your Name"/>
+											<input type="email" name='reviewer_mail' id="reviewer_mail" placeholder="Email Address"/>
 										</span>
 										<textarea name="review_content" ></textarea>
 										<b>Rating: </b> <img src="<?=ROOT_PATH?>/assets/images/product-details/rating.png" alt="" />
@@ -497,3 +503,24 @@
 			</div>
 		</div>
 	</section>
+
+
+	<script>
+		var i = document.getElementById('num_of_review').innerHTML;
+		document.getElementById('show_num_of_review').innerHTML = i;
+
+
+		var r = document.getElementById('is_login').innerHTML;
+		if(r==1){
+			var name = document.getElementById('user_name').innerHTML;
+			var mail = document.getElementById('user_mail').innerHTML;
+
+			document.getElementById('reviewer_name').setAttribute('placeholder', name);
+			document.getElementById('reviewer_name').setAttribute('value', name);
+			document.getElementById('reviewer_name').readOnly = true;
+
+			document.getElementById('reviewer_mail').setAttribute('placeholder', mail);
+			document.getElementById('reviewer_mail').setAttribute('value', mail);
+			document.getElementById('reviewer_mail').readOnly = true;
+		}
+	</script>

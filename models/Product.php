@@ -9,6 +9,7 @@
 				$mail = $post['reviewer_mail'];
 				$content = $post['review_content'];
 
+
 				$this->query = "INSERT INTO reviews(reviewer_name, reviewer_mail, review_content) VALUES('$name', '$mail', '$content')";
 				
 				$this->sendQuery();

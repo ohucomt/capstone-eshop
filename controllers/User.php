@@ -9,5 +9,13 @@ class User extends Controller{
 		$viewmodel = new UserModel();
 		$this->returnView($viewmodel->register(), false);
 	}
+
+	protected function logout(){
+		session_destroy();
+		session_start();
+		Message::setMsg('Logout successfully','success');
+		Helper::redirect();
+		exit();
+	}
 }
 ?>
