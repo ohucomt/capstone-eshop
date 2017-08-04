@@ -70,7 +70,12 @@ class UserModel extends Model{
 				Helper::redirect('/user/index');
 				exit();
 			}else{
-				echo 'add address';
+				$address = $_POST['user_address'];
+				$this->query = "insert into address(user_id, address) values('$user_id', '$address')";
+				$this->sendQuery();
+				Message::setMsg("Your address has been added", "success");
+				Helper::redirect("/user/index");
+				exit();
 			}
 		}
 
@@ -117,16 +122,19 @@ class UserModel extends Model{
 			$user_mail = $_POST['user_mail'];
 			$user_pass = $_POST['user_pass'];
 
+			$valid = Helper::checkPassLen($user_pass);
+			if(!$valid){
+				Helper::redirect('/user/login');
+				exit();
+			}
+
 			$this->connectDB();
 			$this->query = "INSERT INTO users(user_name, user_mail, user_pass) VALUES('$user_name', '$user_mail', '$user_pass')";
 			$this->sendQuery();
 
-			$_SESSION['is_login'] = 1;
-			$_SESSION['user_data']['name'] = $_POST['user_name'];
-			$_SESSION['user_data']['mail'] = $_POST['user_mail'];
 
 			Message::setMsg('Your account has been created','success');
-			Helper::redirect();
+			Helper::redirect('/user/login');
 			exit();
 		}
 	}
