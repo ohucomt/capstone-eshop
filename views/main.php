@@ -6,6 +6,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Home | E-Shopper</title>
+    <link href="<?=ROOT_PATH?>/assets/css/account.css" rel="stylesheet"> 
+	<script src="<?=ROOT_PATH?>/assets/js/account.js"></script>         
+	<script src="<?=ROOT_PATH?>/assets/js/jquery-2.1.4.js"></script>
+	<script src="<?=ROOT_PATH?>/assets/js/velocity.min.js"></script>
+	<script src="<?=ROOT_PATH?>/assets/js/account.js"></script> 
+
     <link href="<?=ROOT_PATH?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=ROOT_PATH?>/assets/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?=ROOT_PATH?>/assets/css/prettyPhoto.css" rel="stylesheet">

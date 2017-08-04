@@ -17,5 +17,13 @@ class User extends Controller{
 		Helper::redirect();
 		exit();
 	}
+
+
+	protected function index(){
+		Helper::loginCheck();
+		$viewmodel = new UserModel();
+		$this->returnView($viewmodel->index(), true);
+	}
+
 }
 ?>

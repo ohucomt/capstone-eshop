@@ -12,7 +12,7 @@
 
 			if(!$_SESSION['is_login']){
 				Message::setMsg("You must login first", "danger");
-				Helper::redirect("user/login");
+				Helper::redirect("/user/login");
 				exit;
 			}
 		}
